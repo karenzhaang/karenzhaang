@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 260" width="880" height="260" role="img" aria-label="Karen Zhang, a painted hillside at golden hour">
+  <style>
+    :root {
+      --sky-top:   #BFE0EC;
+      --sky-mid:   #EBD9C4;
+      --sky-low:   #F6E3C9;
+      --hill-far:  #A9C9B4;
+      --hill-mid:  #7FAE8E;
+      --hill-near: #5C8F72;
+      --tree:      #3E6B55;
+      --trunk:     #6B4A38;
+      --orb:       #FFE9A8;
+      --mote:      #FFF3C4;
+      --ink:       #2E3B33;
+      --ink-soft:  #55665C;
+      --star:      #FFFFFF;
+      --star-op:   0;
+      --mist:      #FFFFFF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sky-top:   #1B2340;
+        --sky-mid:   #38315C;
+        --sky-low:   #6B4668;
+        --hill-far:  #3B4A63;
+        --hill-mid:  #2C3A52;
+        --hill-near: #1E2A3E;
+        --tree:      #16232F;
+        --trunk:     #2A2028;
+        --orb:       #FFF6DE;
+        --mote:      #C8F5A0;
+        --ink:       #F2E8DA;
+        --ink-soft:  #C0B3C7;
+        --star-op:   1;
+        --mist:      #8FA6D8;
+      }
+    }
+
+    .name { font: 400 46px "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; fill: var(--ink); letter-spacing: 0.5px; }
+    .sub  { font: italic 400 17px "Iowan Old Style", Palatino, Georgia, serif; fill: var(--ink-soft); }
+    .tag  { font: 400 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: var(--ink-soft); letter-spacing: 2px; }
+
+    .fade   { opacity: 0; animation: fade 1.6s ease-out forwards; }
+    .fade2  { opacity: 0; animation: fade 1.6s ease-out 0.5s forwards; }
+    .fade3  { opacity: 0; animation: fade 1.6s ease-out 1s forwards; }
+    @keyframes fade { to { opacity: 1; } }
+
+    .clouds   { animation: drift 90s linear infinite; }
+    .clouds-b { animation: drift 60s linear infinite; }
+    .mistband { animation: drift 120s linear infinite; }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-880px); } }
+
+    .sway { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 7s ease-in-out infinite; }
+    .sway-b { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 5.5s ease-in-out infinite; animation-delay: -2s; }
+    @keyframes sway {
+      0%, 100% { transform: rotate(-1.6deg) scaleY(1); }
+      50%      { transform: rotate(1.6deg) scaleY(1.015); }
+    }
+
+    .blade { transform-box: fill-box; transform-origin: 50% 100%; animation: blade 3.4s ease-in-out infinite; }
+    @keyframes blade { 0%,100% { transform: skewX(-6deg); } 50% { transform: skewX(7deg); } }
+
+    .mote { animation: rise 9s linear infinite; }
+    @keyframes rise {
+      0%   { transform: translate(0, 20px) scale(0.6); opacity: 0; }
+      12%  { opacity: 1; }
+      80%  { opacity: 0.85; }
+      100% { transform: translate(26px, -130px) scale(1.1); opacity: 0; }
+    }
+
+    .star { fill: var(--star); opacity: var(--star-op); animation: twinkle 4s ease-in-out infinite; }
+    @keyframes twinkle { 0%,100% { transform: scale(0.6); } 50% { transform: scale(1.2); } }
+
+    .orbglow { animation: breathe 8s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 50%; }
+    @keyframes breathe { 0%,100% { transform: scale(1); opacity: 0.30; } 50% { transform: scale(1.14); opacity: 0.48; } }
+
+    .flock { animation: flyby 26s linear infinite; }
+    @keyframes flyby {
+      0%   { transform: translate(-120px, 30px); }
+      50%  { transform: translate(400px, -10px); }
+      100% { transform: translate(1000px, 20px); }
+    }
+    .wing { transform-box: fill-box; transform-origin: 50% 50%; animation: flap 0.9s ease-in-out infinite; }
+    @keyframes flap { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(0.35); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .clouds, .clouds-b, .mistband, .sway, .sway-b, .blade, .mote,
+      .star, .orbglow, .flock, .wing, .fade, .fade2, .fade3 {
+        animation: none;
+      }
+      .fade, .fade2, .fade3 { opacity: 1; }
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="var(--sky-top)"/>
+      <stop offset="55%"  stop-color="var(--sky-mid)"/>
+      <stop offset="100%" stop-color="var(--sky-low)"/>
+    </linearGradient>
+    <radialGradient id="orbGrad">
+      <stop offset="0%"   stop-color="var(--orb)" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="var(--orb)" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="softer" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <clipPath id="frame"><rect x="0" y="0" width="880" height="260" rx="18"/></clipPath>
+
+    <g id="cloud">
+      <ellipse cx="0"  cy="0"  rx="46" ry="15"/>
+      <ellipse cx="30" cy="-8" rx="30" ry="16"/>
+      <ellipse cx="-26" cy="-4" rx="24" ry="12"/>
+      <ellipse cx="62" cy="2"  rx="26" ry="10"/>
+    </g>
+
+    <g id="bird">
+      <path class="wing" d="M0,0 q6,-7 12,0" fill="none" stroke="var(--ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+      <path class="wing" d="M12,0 q6,-7 12,0" fill="none" stroke="var(--ink-soft)" stroke-width="1.8" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="880" height="260" fill="url(#sky)"/>
+
+    <!-- stars, twilight only -->
+    <g>
+      <circle class="star" cx="120" cy="42" r="1.6"/>
+      <circle class="star" cx="205" cy="26" r="1.2" style="animation-delay:-1.2s"/>
+      <circle class="star" cx="318" cy="58" r="1.5" style="animation-delay:-2.4s"/>
+      <circle class="star" cx="430" cy="34" r="1.1" style="animation-delay:-0.6s"/>
+      <circle class="star" cx="520" cy="70" r="1.6" style="animation-delay:-3.1s"/>
+      <circle class="star" cx="612" cy="30" r="1.3" style="animation-delay:-1.8s"/>
+      <circle class="star" cx="828" cy="120" r="1.5" style="animation-delay:-2.7s"/>
+      <circle class="star" cx="66"  cy="96" r="1.2" style="animation-delay:-3.6s"/>
+    </g>
+
+    <!-- sun / moon -->
+    <g>
+      <circle class="orbglow" cx="742" cy="76" r="64" fill="url(#orbGrad)"/>
+      <circle cx="742" cy="76" r="27" fill="var(--orb)" filter="url(#soft)" opacity="0.9"/>
+      <circle cx="742" cy="76" r="22" fill="var(--orb)"/>
+    </g>
+
+    <!-- far clouds -->
+    <g fill="var(--mist)" opacity="0.55">
+      <g class="clouds">
+        <use href="#cloud" x="120" y="60"/>
+        <use href="#cloud" x="470" y="42" transform="scale(0.8)" transform-origin="470 42"/>
+        <use href="#cloud" x="740" y="118"/>
+        <use href="#cloud" x="1000" y="60"/>
+        <use href="#cloud" x="1350" y="42"/>
+        <use href="#cloud" x="1620" y="118"/>
+      </g>
+    </g>
+    <g fill="var(--mist)" opacity="0.35">
+      <g class="clouds-b">
+        <use href="#cloud" x="300" y="96" transform="scale(1.3)" transform-origin="300 96"/>
+        <use href="#cloud" x="620" y="70"/>
+        <use href="#cloud" x="1180" y="96" transform="scale(1.3)" transform-origin="1180 96"/>
+        <use href="#cloud" x="1500" y="70"/>
+      </g>
+    </g>
+
+    <g class="flock"><use href="#bird" x="0" y="0"/><use href="#bird" x="26" y="10" transform="scale(0.85)"/><use href="#bird" x="-22" y="14" transform="scale(0.7)"/></g>
+
+    <!-- hills -->
+    <path fill="var(--hill-far)" d="M0,172 Q110,132 220,162 T440,154 T660,160 T880,144 L880,260 L0,260 Z"/>
+    <g class="mistband" opacity="0.28">
+      <ellipse cx="180" cy="180" rx="150" ry="9" fill="var(--mist)" filter="url(#softer)"/>
+      <ellipse cx="600" cy="172" rx="120" ry="7" fill="var(--mist)" filter="url(#softer)"/>
+      <ellipse cx="1060" cy="180" rx="150" ry="9" fill="var(--mist)" filter="url(#softer)"/>
+      <ellipse cx="1480" cy="172" rx="120" ry="7" fill="var(--mist)" filter="url(#softer)"/>
+    </g>
+    <path fill="var(--hill-mid)" d="M0,200 C120,168 200,204 320,192 S520,162 640,190 S800,180 880,196 L880,260 L0,260 Z"/>
+    <path fill="var(--hill-near)" d="M0,230 C140,210 240,236 380,228 S620,208 760,230 S860,226 880,232 L880,260 L0,260 Z"/>
+
+    <!-- lone tree -->
+    <g>
+      <path d="M690,232 C692,214 694,204 696,194 L702,194 C704,206 706,216 708,232 Z" fill="var(--trunk)"/>
+      <g class="sway">
+        <ellipse cx="699" cy="176" rx="34" ry="26" fill="var(--tree)"/>
+        <ellipse cx="676" cy="186" rx="21" ry="15" fill="var(--tree)"/>
+        <ellipse cx="722" cy="185" rx="19" ry="14" fill="var(--tree)"/>
+        <ellipse cx="700" cy="158" rx="22" ry="16" fill="var(--tree)"/>
+      </g>
+    </g>
+    <g class="sway-b">
+      <path d="M806,236 C807,226 808,220 809,214 L813,214 C814,222 815,228 816,236 Z" fill="var(--trunk)"/>
+      <ellipse cx="811" cy="206" rx="20" ry="15" fill="var(--tree)"/>
+      <ellipse cx="799" cy="213" rx="12" ry="9" fill="var(--tree)"/>
+    </g>
+
+    <!-- grass -->
+    <g stroke="var(--tree)" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.75">
+      <path class="blade" d="M60,252 q2,-12 6,-18"/>
+      <path class="blade" d="M72,254 q-2,-10 -5,-16" style="animation-delay:-1.1s"/>
+      <path class="blade" d="M210,250 q3,-11 7,-17" style="animation-delay:-2.2s"/>
+      <path class="blade" d="M222,252 q-3,-9 -6,-15" style="animation-delay:-0.6s"/>
+      <path class="blade" d="M470,248 q2,-12 6,-18" style="animation-delay:-1.7s"/>
+      <path class="blade" d="M482,250 q-3,-10 -6,-16" style="animation-delay:-2.9s"/>
+      <path class="blade" d="M620,252 q3,-11 7,-17" style="animation-delay:-0.3s"/>
+    </g>
+
+    <!-- drifting motes -->
+    <g fill="var(--mote)" filter="url(#soft)">
+      <circle class="mote" cx="140" cy="230" r="2.6"/>
+      <circle class="mote" cx="255" cy="238" r="2"   style="animation-duration:11s; animation-delay:-3s"/>
+      <circle class="mote" cx="360" cy="226" r="3"   style="animation-duration:8s;  animation-delay:-6s"/>
+      <circle class="mote" cx="455" cy="242" r="2.2" style="animation-duration:12s; animation-delay:-1.5s"/>
+      <circle class="mote" cx="560" cy="232" r="2.8" style="animation-duration:9.5s;animation-delay:-4.5s"/>
+      <circle class="mote" cx="665" cy="240" r="2"   style="animation-duration:10.5s;animation-delay:-7.5s"/>
+      <circle class="mote" cx="770" cy="234" r="2.6" style="animation-duration:8.5s;animation-delay:-2.2s"/>
+      <circle class="mote" cx="840" cy="244" r="2.2" style="animation-duration:11.5s;animation-delay:-5.8s"/>
+      <circle class="mote" cx="90"  cy="244" r="2"   style="animation-duration:10s; animation-delay:-8.4s"/>
+      <circle class="mote" cx="310" cy="248" r="2.4" style="animation-duration:9s;  animation-delay:-5s"/>
+    </g>
+
+    <!-- title -->
+    <text class="name fade" x="48" y="90">karen zhang</text>
+    <text class="sub fade2" x="50" y="120">artist and software engineer</text>
+    <text class="tag fade3" x="50" y="146">JUNIOR · CS + FINE ART · UNIVERSITY OF WASHINGTON</text>
+  </g>
+</svg>
