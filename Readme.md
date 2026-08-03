@@ -23,7 +23,5 @@
 </p>
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=swift,python,react,nextjs,tailwind,figma,git&theme=light" alt="tools">
-</p>
-
+  <img src="https://skillicons.dev/icons?i=java,swift,python,react,nextjs,tailwind,figma,git&theme=light" alt="tools">
 </p>
