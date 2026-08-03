@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 200" width="440" height="200" role="img" aria-label="a small boat fishing at dusk">
+  <style>
+    :root {
+      --sky-a: #CFE6EE; --sky-b: #F6E3C9;
+      --sea-a: #7FAE8E; --sea-b: #3E6B55;
+      --boat:  #2E3B33; --line: #2E3B33;
+      --orb:   #FFE9A8; --pop: #FF6B5E;
+      --foam:  #FFFFFF; --star-op: 0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sky-a: #1B2340; --sky-b: #6B4668;
+        --sea-a: #2C3A52; --sea-b: #101A2C;
+        --boat:  #0B1220; --line: #C0B3C7;
+        --orb:   #FFF6DE; --pop: #C8F5A0;
+        --foam:  #8FA6D8; --star-op: 1;
+      }
+    }
+    .bob    { transform-box: fill-box; transform-origin: 50% 100%; animation: bob 4s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform: translateY(0) rotate(-1.2deg); } 50% { transform: translateY(-4px) rotate(1.2deg); } }
+
+    .float  { animation: float 2.6s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+
+    .ripple { transform-box: fill-box; transform-origin: 50% 50%; animation: ripple 2.6s ease-out infinite; }
+    @keyframes ripple { 0% { transform: scale(0.3); opacity: 0.75; } 100% { transform: scale(1.9); opacity: 0; } }
+
+    .wave   { animation: wave 14s linear infinite; }
+    .wave-b { animation: wave 9s linear infinite; }
+    @keyframes wave { from { transform: translateX(0); } to { transform: translateX(-120px); } }
+
+    .fish { transform-box: fill-box; transform-origin: 50% 50%; animation: jump 9s ease-in-out infinite; }
+    @keyframes jump {
+      0%, 70%  { transform: translate(0, 34px) rotate(-46deg); opacity: 0; }
+      72%      { transform: translate(2px, 26px) rotate(-44deg); opacity: 1; }
+      80%      { transform: translate(20px, -18px) rotate(-16deg); opacity: 1; }
+      86%      { transform: translate(38px, -30px) rotate(14deg); opacity: 1; }
+      94%      { transform: translate(58px, 20px) rotate(54deg); opacity: 1; }
+      97%,100% { transform: translate(62px, 34px) rotate(60deg); opacity: 0; }
+    }
+    .splash { transform-box: fill-box; transform-origin: 50% 100%; animation: splash 9s ease-out infinite; }
+    @keyframes splash {
+      0%, 71%  { transform: scale(0.2); opacity: 0; }
+      74%      { transform: scale(1); opacity: 0.8; }
+      82%      { transform: scale(1.6); opacity: 0; }
+      92%      { transform: scale(0.3); opacity: 0.7; }
+      100%     { transform: scale(1.7); opacity: 0; }
+    }
+    .star { fill: var(--orb); opacity: var(--star-op); animation: tw 4s ease-in-out infinite; }
+    @keyframes tw { 0%,100% { opacity: calc(var(--star-op) * 0.4); } 50% { opacity: var(--star-op); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bob,.float,.ripple,.wave,.wave-b,.fish,.splash,.star { animation: none; }
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="var(--sky-a)"/><stop offset="100%" stop-color="var(--sky-b)"/>
+    </linearGradient>
+    <linearGradient id="se" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="var(--sea-a)"/><stop offset="100%" stop-color="var(--sea-b)"/>
+    </linearGradient>
+    <clipPath id="fr"><rect width="440" height="200" rx="16"/></clipPath>
+    <clipPath id="below"><rect y="120" width="440" height="80"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#fr)">
+    <rect width="440" height="200" fill="url(#sk)"/>
+
+    <circle class="star" cx="60"  cy="34" r="1.5"/>
+    <circle class="star" cx="140" cy="22" r="1.2" style="animation-delay:-1.4s"/>
+    <circle class="star" cx="286" cy="30" r="1.4" style="animation-delay:-2.6s"/>
+    <circle class="star" cx="392" cy="52" r="1.2" style="animation-delay:-0.8s"/>
+
+    <circle cx="366" cy="46" r="18" fill="var(--orb)" opacity="0.85"/>
+    <circle cx="366" cy="46" r="30" fill="var(--orb)" opacity="0.18"/>
+
+    <rect y="120" width="440" height="80" fill="url(#se)"/>
+
+    <!-- moonpath shimmer -->
+    <g clip-path="url(#below)" opacity="0.3">
+      <ellipse cx="366" cy="128" rx="22" ry="4" fill="var(--orb)"/>
+      <ellipse cx="366" cy="140" rx="16" ry="3" fill="var(--orb)"/>
+      <ellipse cx="366" cy="152" rx="10" ry="2.5" fill="var(--orb)"/>
+    </g>
+
+    <!-- surface lines -->
+    <g stroke="var(--foam)" fill="none" stroke-width="1.6" stroke-linecap="round" opacity="0.35">
+      <g class="wave">
+        <path d="M-20,146 q15,-5 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/>
+      </g>
+      <g class="wave-b">
+        <path d="M-20,172 q15,-4 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0" opacity="0.7"/>
+      </g>
+    </g>
+
+    <!-- boat, angler, rod -->
+    <g class="bob">
+      <!-- angler, drawn before the hull so the hull hides her lower half -->
+      <path d="M133,90 q-8,8 -6,18 q6,-6 8,-14 z" fill="var(--boat)"/>
+      <path d="M129,118 c-2,-13 0,-20 5,-25 c3,-3 9,-2 11,1 c4,5 5,14 5,24 z" fill="var(--boat)"/>
+      <circle cx="139" cy="89" r="6.6" fill="var(--boat)"/>
+      <g transform="rotate(-7 139 83)">
+        <ellipse cx="139" cy="83" rx="15" ry="3.8" fill="var(--orb)" opacity="0.92"/>
+        <path d="M131,83 q1,-11 8,-11 q7,0 8,11 z" fill="var(--orb)" opacity="0.92"/>
+      </g>
+      <path d="M145,100 L157,105" stroke="var(--boat)" stroke-width="4.6" stroke-linecap="round"/>
+      <line x1="156" y1="105" x2="211" y2="72" stroke="var(--boat)" stroke-width="2.4" stroke-linecap="round"/>
+
+      <!-- rowboat -->
+      <path d="M84,115 c4,15 23,24 56,24 c33,0 52,-9 56,-24 z" fill="var(--boat)"/>
+      <rect x="82" y="111" width="116" height="5.5" rx="2.75" fill="var(--orb)" opacity="0.85"/>
+
+      <path d="M211,72 Q231,95 244,116" fill="none" stroke="var(--line)" stroke-width="1.1" opacity="0.8"/>
+    </g>
+
+    <!-- bobber and ripples -->
+    <g class="float">
+      <ellipse class="ripple" cx="244" cy="122" rx="16" ry="5" fill="none" stroke="var(--foam)" stroke-width="1.4"/>
+      <ellipse class="ripple" cx="244" cy="122" rx="16" ry="5" fill="none" stroke="var(--foam)" stroke-width="1.4" style="animation-delay:-1.3s"/>
+      <circle cx="244" cy="118" r="4.5" fill="var(--pop)"/>
+    </g>
+
+    <!-- leaping fish -->
+    <g class="fish">
+      <ellipse cx="300" cy="120" rx="11" ry="5.5" fill="var(--pop)"/>
+      <path d="M311,120 l9,-6 l0,12 z" fill="var(--pop)"/>
+      <circle cx="294" cy="118" r="1.4" fill="var(--sea-b)"/>
+    </g>
+    <ellipse class="splash" cx="300" cy="124" rx="14" ry="5" fill="none" stroke="var(--foam)" stroke-width="1.6" opacity="0"/>
+  </g>
+</svg>
